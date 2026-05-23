@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limousine Events — Location Limousine Paris & Île-de-France</title>
+<meta name="description" content="Limousine Events — Location de limousine avec chauffeur en Île-de-France. Mariage, transfert, Paris By Night. À partir de 150€. Tél: 06 20 35 61 52">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #C8102E;
+  --red-dark: #9A0B21;
+  --red-light: #E8253F;
+  --black: #0D0D0D;
+  --dark: #141414;
+  --dark2: #1C1C1C;
+  --white: #F2EEE8;
+  --grey: #888;
+  --font-hero: 'Bebas Neue', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 400; overflow-x: hidden; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--red); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 50px; height: 72px;
+  transition: background 0.4s, height 0.4s, box-shadow 0.4s;
+}
+nav.scrolled {
+  background: rgba(13,13,13,0.96); backdrop-filter: blur(16px);
+  height: 60px; box-shadow: 0 1px 0 rgba(200,16,46,0.25);
+}
+.nav-logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+.logo-top { font-family: var(--font-hero); font-size: 1.7rem; letter-spacing: 0.08em; color: var(--white); }
+.logo-bottom { font-family: var(--font-body); font-size: 0.55rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--red); font-weight: 600; margin-top: 2px; }
+.logo-line { height: 2px; background: var(--red); margin-top: 4px; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(242,238,232,0.75); text-decoration: none; transition: color 0.25s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -4px; height: 2px; background: var(--red); transition: right 0.3s ease; }
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { right: 0; }
+.nav-tel { background: var(--red); color: var(--white); font-family: var(--font-body); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; padding: 10px 22px; text-decoration: none; transition: background 0.25s; }
+.nav-tel:hover { background: var(--red-light); }
+
+/* ── HERO ── */
+.hero { position: relative; height: 100vh; min-height: 680px; overflow: hidden; display: flex; align-items: flex-end; }
+.slides { position: absolute; inset: 0; }
+.slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
+.slide.active { opacity: 1; }
+.slide img { width: 100%; height: 100%; object-fit: cover; animation: kb 9s ease-in-out forwards; }
+@keyframes kb { from { transform: scale(1.06); } to { transform: scale(1.01); } }
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.5) 55%, rgba(13,13,13,0.12) 100%),
+              linear-gradient(to top, rgba(13,13,13,0.96) 0%, rgba(13,13,13,0) 50%);
+}
+.hero-redbar { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--red); z-index: 3; }
+
+/* Giant LIMOUSINE word behind */
+.hero-bigword {
+  position: absolute; bottom: -0.05em; left: -0.01em;
+  font-family: var(--font-hero); font-size: clamp(10rem, 23vw, 23rem);
+  color: transparent; -webkit-text-stroke: 1.5px rgba(200,16,46,0.14);
+  letter-spacing: -0.01em; line-height: 1; pointer-events: none; z-index: 2;
+  white-space: nowrap; user-select: none;
+}
+
+.hero-content { position: relative; z-index: 5; padding: 0 65px 85px 65px; max-width: 720px; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-body); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; }
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--red); }
+.hero-title { font-family: var(--font-hero); font-size: clamp(3.4rem, 8vw, 8rem); line-height: 0.92; letter-spacing: 0.03em; color: var(--white); margin-bottom: 18px; text-shadow: 0 4px 40px rgba(0,0,0,0.6); }
+.hero-title span { color: var(--red); }
+.hero-sub { font-family: var(--font-body); font-size: 1rem; font-weight: 400; letter-spacing: 0.12em; color: rgba(242,238,232,0.6); margin-bottom: 38px; text-transform: uppercase; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-red { background: var(--red); color: var(--white); padding: 14px 38px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--red); transition: background 0.25s, box-shadow 0.25s; }
+.btn-red:hover { background: var(--red-light); box-shadow: 0 8px 32px rgba(200,16,46,0.4); }
+.btn-ghost { background: transparent; color: var(--white); padding: 14px 38px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(242,238,232,0.3); transition: border-color 0.25s; }
+.btn-ghost:hover { border-color: var(--white); }
+
+.hero-dots { position: absolute; bottom: 32px; right: 50px; z-index: 6; display: flex; gap: 10px; }
+.hdot { width: 28px; height: 3px; background: rgba(255,255,255,0.22); border: none; cursor: pointer; transition: background 0.3s, width 0.3s; padding: 0; }
+.hdot.active { background: var(--red); width: 46px; }
+
+.hero-scroll { position: absolute; bottom: 36px; left: 65px; z-index: 6; display: flex; align-items: center; gap: 12px; }
+.hero-scroll span { font-size: 0.55rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(242,238,232,0.35); writing-mode: vertical-lr; }
+.scroll-bar { width: 1px; height: 50px; background: rgba(200,16,46,0.25); position: relative; overflow: hidden; }
+.scroll-bar::after { content: ''; position: absolute; top: -100%; left: 0; right: 0; height: 100%; background: var(--red); animation: sdrop 2s ease-in-out infinite; }
+@keyframes sdrop { 0% { top: -100%; } 100% { top: 100%; } }
+
+/* ── TICKER ── */
+.ticker { background: var(--red); overflow: hidden; white-space: nowrap; padding: 11px 0; border-top: 1px solid var(--red-light); border-bottom: 1px solid var(--red-dark); }
+.ticker-track { display: inline-flex; animation: tick 30s linear infinite; }
+.ticker-item { font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white); padding: 0 38px; display: inline-flex; align-items: center; gap: 18px; }
+.ticker-item::after { content: '◆'; font-size: 0.38rem; opacity: 0.5; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SECTIONS ── */
+section { padding: 100px 60px; }
+.ey { display: flex; align-items: center; gap: 14px; font-family: var(--font-body); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+.ey::before { content: ''; display: block; width: 26px; height: 2px; background: var(--red); flex-shrink: 0; }
+.stitle { font-family: var(--font-hero); font-size: clamp(2.8rem, 5.5vw, 5.5rem); letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 20px; }
+.stitle em { font-style: normal; color: var(--red); }
+
+/* ── ABOUT ── */
+.about { background: var(--dark); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 100px 60px; }
+.aimg { position: relative; }
+.aimg img { width: 100%; height: 520px; object-fit: cover; display: block; filter: grayscale(10%); transition: filter 0.5s; }
+.aimg:hover img { filter: grayscale(0%); }
+.aimg::before { content: ''; position: absolute; top: -8px; left: -8px; width: 56px; height: 56px; border-top: 3px solid var(--red); border-left: 3px solid var(--red); z-index: 1; }
+.aimg::after { content: ''; position: absolute; bottom: -8px; right: -8px; width: 56px; height: 56px; border-bottom: 3px solid var(--red); border-right: 3px solid var(--red); z-index: 1; }
+.abadge { position: absolute; top: 30px; right: -18px; background: var(--red); color: var(--white); padding: 18px; text-align: center; z-index: 2; min-width: 100px; }
+.abadge-n { font-family: var(--font-hero); font-size: 2.8rem; line-height: 1; display: block; }
+.abadge-t { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.85; margin-top: 4px; display: block; }
+.atext p { font-size: 1.05rem; line-height: 1.85; color: rgba(242,238,232,0.72); margin-bottom: 20px; }
+.atext strong { color: var(--white); }
+.lic { display: inline-flex; align-items: center; gap: 10px; background: rgba(200,16,46,0.07); border: 1px solid rgba(200,16,46,0.28); padding: 12px 18px; margin-top: 18px; font-size: 0.7rem; letter-spacing: 0.1em; color: rgba(242,238,232,0.55); }
+.lic strong { color: var(--red); }
+
+/* ── SERVICES ── */
+.services { background: var(--black); }
+.svc-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid rgba(200,16,46,0.1); margin-top: 56px; }
+.svc { padding: 42px 30px; border-right: 1px solid rgba(200,16,46,0.1); border-bottom: 1px solid rgba(200,16,46,0.1); position: relative; overflow: hidden; transition: background 0.3s; }
+.svc:hover { background: rgba(200,16,46,0.06); }
+.svc::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--red); transform: scaleY(0); transition: transform 0.35s ease; transform-origin: bottom; }
+.svc:hover::after { transform: scaleY(1); }
+.svc-num { font-family: var(--font-hero); font-size: 3.2rem; color: rgba(200,16,46,0.1); line-height: 1; margin-bottom: 14px; transition: color 0.3s; }
+.svc:hover .svc-num { color: rgba(200,16,46,0.22); }
+.svc-name { font-family: var(--font-hero); font-size: 1.4rem; letter-spacing: 0.05em; color: var(--white); margin-bottom: 10px; }
+.svc-desc { font-size: 0.82rem; line-height: 1.75; color: var(--grey); }
+
+/* ── FLEET ── */
+.fleet { background: var(--dark); }
+.fleet-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px; }
+.fcard { position: relative; overflow: hidden; background: var(--dark2); }
+.fcard img { width: 100%; height: 270px; object-fit: cover; display: block; filter: grayscale(20%) brightness(0.85); transition: transform 0.6s, filter 0.6s; }
+.fcard:hover img { transform: scale(1.07); filter: grayscale(0%) brightness(1); }
+.fcard-info { padding: 26px; border-top: 2px solid transparent; transition: border-color 0.3s; }
+.fcard:hover .fcard-info { border-color: var(--red); }
+.fcard-model { font-family: var(--font-hero); font-size: 1.55rem; letter-spacing: 0.05em; margin-bottom: 4px; }
+.fcard-cap { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+.ftags { display: flex; flex-wrap: wrap; gap: 5px; }
+.ftag { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--grey); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 4px 9px; }
+.fmore { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 370px; background: rgba(200,16,46,0.06); border: 1px solid rgba(200,16,46,0.18); cursor: pointer; transition: background 0.3s; text-decoration: none; }
+.fmore:hover { background: rgba(200,16,46,0.12); }
+.fmore-plus { font-family: var(--font-hero); font-size: 5rem; color: var(--red); line-height: 1; margin-bottom: 10px; }
+.fmore-txt { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(242,238,232,0.38); text-align: center; }
+
+/* ── PHOTO STRIP ── */
+.strip-wrap { background: var(--black); padding: 80px 0; overflow: hidden; }
+.strip-header { padding: 0 60px; margin-bottom: 48px; }
+.strip-track { display: flex; gap: 8px; animation: striprun 35s linear infinite; width: max-content; }
+.strip-track:hover { animation-play-state: paused; }
+.strip-track img { height: 220px; width: auto; object-fit: cover; display: block; filter: grayscale(25%); transition: filter 0.4s, transform 0.4s; flex-shrink: 0; cursor: zoom-in; }
+.strip-track img:hover { filter: grayscale(0%); transform: scale(1.04); }
+@keyframes striprun { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── PARIS BY NIGHT ── */
+.pbn { position: relative; min-height: 580px; display: flex; align-items: center; overflow: hidden; }
+.pbn-bg { position: absolute; inset: 0; }
+.pbn-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.28; filter: saturate(0.5); }
+.pbn-ov { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.65) 50%, rgba(13,13,13,0.15) 100%); }
+.pbn-content { position: relative; z-index: 2; padding: 100px 60px; max-width: 600px; }
+.pbn-content p { font-size: 1rem; line-height: 1.82; color: rgba(242,238,232,0.62); margin-bottom: 36px; }
+
+/* ── PRICING ── */
+.pricing { background: var(--dark); }
+.ptabs { display: flex; flex-wrap: wrap; border: 1px solid rgba(200,16,46,0.2); width: fit-content; margin: 48px 0 36px; }
+.ptab { padding: 12px 24px; font-family: var(--font-body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; background: transparent; border: none; border-right: 1px solid rgba(200,16,46,0.2); color: var(--grey); cursor: pointer; transition: background 0.25s, color 0.25s; }
+.ptab:last-child { border-right: none; }
+.ptab.active { background: var(--red); color: var(--white); }
+.ptab:hover:not(.active) { color: var(--red); }
+.pcont { display: none; }
+.pcont.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.pcard { background: var(--dark2); border: 1px solid rgba(255,255,255,0.05); padding: 42px 34px; position: relative; transition: border-color 0.3s, transform 0.3s; }
+.pcard:hover { border-color: rgba(200,16,46,0.4); transform: translateY(-4px); }
+.pcard.feat { border-color: var(--red); }
+.pbadge { position: absolute; top: -1px; right: 22px; background: var(--red); color: var(--white); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 14px; }
+.pname { font-family: var(--font-hero); font-size: 1.55rem; letter-spacing: 0.05em; margin-bottom: 4px; }
+.pdur { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); margin-bottom: 22px; }
+.pprice { font-family: var(--font-hero); font-size: 3.2rem; color: var(--red); line-height: 1; margin-bottom: 4px; }
+.pfrom { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); margin-bottom: 24px; }
+.plist { list-style: none; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 18px; }
+.plist li { font-size: 0.82rem; color: rgba(242,238,232,0.58); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: flex-start; gap: 10px; }
+.plist li::before { content: '▸'; color: var(--red); font-size: 0.62rem; margin-top: 2px; flex-shrink: 0; }
+
+/* ── CONTACT ── */
+.contact { background: var(--black); display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+.cleft { padding: 100px 65px; background: var(--red); position: relative; overflow: hidden; }
+.cleft::before { content: 'CONTACT'; position: absolute; bottom: -20px; right: -8px; font-family: var(--font-hero); font-size: 8rem; color: rgba(0,0,0,0.1); white-space: nowrap; pointer-events: none; letter-spacing: 0.04em; }
+.cleft .ey { color: rgba(255,255,255,0.55); }
+.cleft .ey::before { background: rgba(255,255,255,0.4); }
+.cleft .stitle { color: var(--white); }
+.clist { list-style: none; margin-top: 36px; }
+.citem { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; align-items: flex-start; gap: 16px; }
+.citem:first-child { border-top: 1px solid rgba(255,255,255,0.15); }
+.cicon { font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+.clabel { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.52); display: block; margin-bottom: 3px; }
+.cval { font-family: var(--font-hero); font-size: 1.3rem; letter-spacing: 0.06em; color: var(--white); text-decoration: none; display: block; }
+.cval:hover { text-decoration: underline; }
+.csocials { display: flex; gap: 10px; margin-top: 34px; }
+.csoc { padding: 10px 18px; border: 2px solid rgba(255,255,255,0.3); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); text-decoration: none; transition: background 0.25s; }
+.csoc:hover { background: rgba(255,255,255,0.14); }
+.cright { padding: 100px 65px; background: var(--dark2); display: flex; flex-direction: column; justify-content: center; }
+.ftitle { font-family: var(--font-hero); font-size: 2.2rem; letter-spacing: 0.05em; margin-bottom: 34px; }
+.ftitle span { color: var(--red); }
+.fg { margin-bottom: 18px; }
+.fg label { display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); margin-bottom: 8px; }
+.fg input, .fg select, .fg textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-bottom: 2px solid rgba(255,255,255,0.11); color: var(--white); padding: 13px 15px; font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.25s, background 0.25s; appearance: none; }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-bottom-color: var(--red); background: rgba(200,16,46,0.04); }
+.fg select option { background: var(--dark2); }
+.fg textarea { height: 110px; resize: vertical; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fsend { width: 100%; background: var(--red); border: none; color: var(--white); padding: 17px; font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; transition: background 0.25s, box-shadow 0.25s; margin-top: 6px; }
+.fsend:hover { background: var(--red-light); box-shadow: 0 8px 30px rgba(200,16,46,0.35); }
+
+/* ── FOOTER ── */
+footer { background: #0A0A0A; border-top: 3px solid var(--red); padding: 60px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; }
+.flogo { font-family: var(--font-hero); font-size: 1.9rem; letter-spacing: 0.06em; color: var(--white); text-decoration: none; display: block; margin-bottom: 14px; }
+.flogo span { color: var(--red); }
+.fdesc { font-size: 0.82rem; line-height: 1.8; color: var(--grey); margin-bottom: 14px; }
+.flic { font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(136,136,136,0.38); }
+.fcol h5 { font-family: var(--font-body); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(200,16,46,0.2); }
+.fcol ul { list-style: none; }
+.fcol ul li { margin-bottom: 9px; }
+.fcol ul li a { font-size: 0.82rem; color: var(--grey); text-decoration: none; letter-spacing: 0.04em; transition: color 0.25s, padding-left 0.25s; }
+.fcol ul li a:hover { color: var(--red); padding-left: 6px; }
+.fbot { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 26px; display: flex; justify-content: space-between; align-items: center; }
+.fbot p { font-size: 0.65rem; color: rgba(136,136,136,0.38); letter-spacing: 0.1em; }
+.fcgv { font-size: 0.65rem; color: var(--red); text-decoration: none; letter-spacing: 0.1em; transition: color 0.25s; }
+.fcgv:hover { color: var(--red-light); }
+
+/* ── REVEAL ── */
+.rev { opacity: 0; transform: translateY(26px); transition: opacity 0.72s ease, transform 0.72s ease; }
+.rev.in { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1000px) {
+  nav { padding: 0 22px; }
+  .nav-links { display: none; }
+  section, .about { padding: 70px 22px; }
+  .hero-content { padding: 0 22px 70px; }
+  .hero-bigword { font-size: 18vw; }
+  .svc-grid { grid-template-columns: 1fr 1fr; }
+  .fleet-grid { grid-template-columns: 1fr 1fr; }
+  .about { grid-template-columns: 1fr; gap: 50px; }
+  .contact { grid-template-columns: 1fr; }
+  .cleft, .cright { padding: 70px 28px; }
+  footer { grid-template-columns: 1fr 1fr; padding: 50px 22px; }
+  .fbot { flex-direction: column; gap: 10px; }
+  .pcont.active { grid-template-columns: 1fr; }
+  .strip-header { padding: 0 22px; }
+  .pbn-content { padding: 80px 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <span class="logo-top">LIMOUSINE EVENTS</span>
+    <span class="logo-bottom">Paris &amp; Île-de-France</span>
+    <div class="logo-line"></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Prestations</a></li>
+    <li><a href="#fleet">Nos Limousines</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:0620356152" class="nav-tel">☎ 06 20 35 61 52</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="slides" id="slides">
+    <div class="slide active"><img src="http://www.limousine-events.fr/images/img_vehicule_300cwhite1.jpg" alt="Chrysler 300C White" onerror="this.parentElement.classList.remove('active')"></div>
+    <div class="slide"><img src="http://www.limousine-events.fr/images/img_vehicule_300cblack1.jpg" alt="300C Black" onerror="this.parentElement.remove()"></div>
+    <div class="slide"><img src="http://www.limousine-events.fr/images/img_vehicule_dodgecharger1.jpg" alt="Dodge Charger" onerror="this.parentElement.remove()"></div>
+    <div class="slide"><img src="http://www.limousine-events.fr/images/img_vehicule_lincolnwhite1.jpg" alt="Lincoln White" onerror="this.parentElement.remove()"></div>
+    <div class="slide"><img src="http://www.limousine-events.fr/images/img_vehicule_lincolnsilver1.jpg" alt="Lincoln Silver" onerror="this.parentElement.remove()"></div>
+    <div class="slide"><img src="http://www.limousine-events.fr/images/img_vehicule_300cwhite5.jpg" alt="Interior" onerror="this.parentElement.remove()"></div>
+    <div class="slide"><img src="http://www.limousine-events.fr/images/img_photos3.jpg" alt="Galerie" onerror="this.parentElement.remove()"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-redbar"></div>
+  <div class="hero-bigword">LIMOUSINE</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Île-de-France · Licence officielle depuis 2009</div>
+    <h1 class="hero-title">L'EXCELLENCE<br><span>EN ROUTE</span></h1>
+    <p class="hero-sub">Location de limousine avec chauffeur · 8 passagers · À partir de 150€</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-red">Réserver maintenant</a>
+      <a href="#fleet" class="btn-ghost">Voir nos limousines</a>
+    </div>
+  </div>
+  <div class="hero-dots" id="dots"></div>
+  <div class="hero-scroll">
+    <div class="scroll-bar"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Mariage</span>
+    <span class="ticker-item">Transfert Aéroport</span>
+    <span class="ticker-item">Paris By Night</span>
+    <span class="ticker-item">Anniversaire</span>
+    <span class="ticker-item">Soirée Privée</span>
+    <span class="ticker-item">Enterrement de Vie de Célibataire</span>
+    <span class="ticker-item">Forfait Casino</span>
+    <span class="ticker-item">Forfait Restaurant</span>
+    <span class="ticker-item">Mise à Disposition</span>
+    <span class="ticker-item">Pub Limo</span>
+    <span class="ticker-item">Mariage</span>
+    <span class="ticker-item">Transfert Aéroport</span>
+    <span class="ticker-item">Paris By Night</span>
+    <span class="ticker-item">Anniversaire</span>
+    <span class="ticker-item">Soirée Privée</span>
+    <span class="ticker-item">Enterrement de Vie de Célibataire</span>
+    <span class="ticker-item">Forfait Casino</span>
+    <span class="ticker-item">Forfait Restaurant</span>
+    <span class="ticker-item">Mise à Disposition</span>
+    <span class="ticker-item">Pub Limo</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="aimg rev">
+    <img src="http://www.limousine-events.fr/images/img_vehicule_300cwhite2.jpg" alt="Intérieur limousine" onerror="this.src='http://www.limousine-events.fr/images/img_vehicule_300cwhite4.jpg'">
+    <div class="abadge">
+      <span class="abadge-n">+15</span>
+      <span class="abadge-t">Ans<br>d'expérience</span>
+    </div>
+  </div>
+  <div class="atext rev">
+    <div class="ey">Qui sommes-nous</div>
+    <h2 class="stitle">LIMOUSINE<br><em>EVENTS</em></h2>
+    <p style="margin-top:20px"><strong>Limousine Events</strong> est spécialisée dans la location de limousine avec chauffeur en Île-de-France. Pour célébrer les événements festifs et solennels de votre vie, nous vous accompagnons et vous conseillons pour que vos choix flirtent avec l'<strong>Excellence</strong>.</p>
+    <p>Anniversaire, enterrement de vie de célibataire, soirée privée, rendez-vous d'affaire, mariage, demande en mariage... Nos chauffeurs expérimentés répondent à des règles strictes de <strong>confidentialité et de discrétion</strong>.</p>
+    <p>Où que vous vous trouviez, l'exceptionnel viendra devant chez vous. L'accès au luxe et à la liberté à côté de chez soi.</p>
+    <div class="lic"><strong>✓</strong> Ministère des Transports · Licence n°<strong>2009/11/0003596</strong></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="rev">
+    <div class="ey">Ce que nous proposons</div>
+    <h2 class="stitle">NOS <em>PRESTATIONS</em></h2>
+  </div>
+  <div class="svc-grid">
+    <div class="svc rev"><div class="svc-num">01</div><h3 class="svc-name">MARIAGE</h3><p class="svc-desc">Pour ce jour unique, une limousine avec chauffeur vous conduira tout au long de cette merveilleuse journée. Paillettes et émotion côtoieront le bonheur.</p></div>
+    <div class="svc rev"><div class="svc-num">02</div><h3 class="svc-name">TRANSFERT</h3><p class="svc-desc">Aéroport, gare, hôtel ou société — calme et volupté pour tous vos transferts professionnels et privés. Ponctualité garantie, itinéraire optimisé.</p></div>
+    <div class="svc rev"><div class="svc-num">03</div><h3 class="svc-name">PARIS BY NIGHT</h3><p class="svc-desc">Une visite inoubliable à bord d'une luxueuse limousine avec vue sur tous les monuments illuminés de la capitale. Laissez-vous envoûter.</p></div>
+    <div class="svc rev"><div class="svc-num">04</div><h3 class="svc-name">PUB LIMO</h3><p class="svc-desc">Votre logo ou slogan sur les plus belles avenues parisiennes. Conception, exposition, durée sur mesure — des milliers de regards garantis.</p></div>
+    <div class="svc rev"><div class="svc-num">05</div><h3 class="svc-name">ÉVÉNEMENTS</h3><p class="svc-desc">EVG, anniversaire, soirée privée... Limousine équipée karaoké, discothèque, diffuseur de fumée. Un moment mémorable garanti pour vous et vos proches.</p></div>
+    <div class="svc rev"><div class="svc-num">06</div><h3 class="svc-name">MISE À DISPO.</h3><p class="svc-desc">Quelques heures ou une journée entière — siège cuir, mini bar, karaoké. Une limousine avec chauffeur entièrement à votre disposition.</p></div>
+    <div class="svc rev"><div class="svc-num">07</div><h3 class="svc-name">FORFAIT RESTAURANT</h3><p class="svc-desc">Prise en charge, attente 2h sur place, balade 30 min dans Paris vers les plus beaux monuments, retour domicile inclus.</p></div>
+    <div class="svc rev"><div class="svc-num">08</div><h3 class="svc-name">FORFAIT CASINO</h3><p class="svc-desc">Soirée de rêve au casino — simple transfert ou aller-retour, nous mettrons tout en œuvre pour une nuit mémorable toute votre vie.</p></div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet" id="fleet">
+  <div class="rev">
+    <div class="ey">Notre flotte</div>
+    <h2 class="stitle">NOS <em>LIMOUSINES</em></h2>
+  </div>
+  <div class="fleet-grid">
+    <div class="fcard rev">
+      <img src="http://www.limousine-events.fr/images/img_vehicule_300cwhite1.jpg" alt="300C White" onerror="this.style.cssText='height:270px;background:#1c1c1c;display:block'">
+      <div class="fcard-info"><div class="fcard-model">CHRYSLER 300C WHITE</div><div class="fcard-cap">8 Passagers · Moteur V6 3,5L · 8,55m</div><div class="ftags"><span class="ftag">Cuir bi-ton</span><span class="ftag">Disco Floor</span><span class="ftag">Sono 1000W</span><span class="ftag">Plafonnier étoilé</span><span class="ftag">Clim multizone</span><span class="ftag">DVD/MP3</span></div></div>
+    </div>
+    <div class="fcard rev">
+      <img src="http://www.limousine-events.fr/images/img_vehicule_300cblack1.jpg" alt="300C Black" onerror="this.style.cssText='height:270px;background:#1c1c1c;display:block'">
+      <div class="fcard-info"><div class="fcard-model">CHRYSLER 300C BLACK</div><div class="fcard-cap">8 Passagers · Black Edition</div><div class="ftags"><span class="ftag">Cuir premium</span><span class="ftag">Mini bar</span><span class="ftag">Karaoké</span><span class="ftag">Ambiance LED</span><span class="ftag">Discothèque</span></div></div>
+    </div>
+    <div class="fcard rev">
+      <img src="http://www.limousine-events.fr/images/img_vehicule_dodgecharger1.jpg" alt="Dodge Charger" onerror="this.style.cssText='height:270px;background:#1c1c1c;display:block'">
+      <div class="fcard-info"><div class="fcard-model">DODGE CHARGER</div><div class="fcard-cap">8 Passagers · American Legend</div><div class="ftags"><span class="ftag">Chrome & cuir</span><span class="ftag">Multimédia</span><span class="ftag">LED bar</span><span class="ftag">Bar prestige</span></div></div>
+    </div>
+    <div class="fcard rev">
+      <img src="http://www.limousine-events.fr/images/img_vehicule_lincolnwhite1.jpg" alt="Lincoln White" onerror="this.style.cssText='height:270px;background:#1c1c1c;display:block'">
+      <div class="fcard-info"><div class="fcard-model">LINCOLN WHITE</div><div class="fcard-cap">8 Passagers · White Pearl</div><div class="ftags"><span class="ftag">Prestige US</span><span class="ftag">Sono premium</span><span class="ftag">Mini bar</span><span class="ftag">Vitres teintées</span></div></div>
+    </div>
+    <div class="fcard rev">
+      <img src="http://www.limousine-events.fr/images/img_vehicule_lincolnsilver1.jpg" alt="Lincoln Silver" onerror="this.style.cssText='height:270px;background:#1c1c1c;display:block'">
+      <div class="fcard-info"><div class="fcard-model">LINCOLN SILVER</div><div class="fcard-cap">8 Passagers · Silver Edition</div><div class="ftags"><span class="ftag">Argent mat</span><span class="ftag">Audio surround</span><span class="ftag">Bar équipé</span><span class="ftag">Karaoké</span></div></div>
+    </div>
+    <a href="#contact" class="fmore rev">
+      <div class="fmore-plus">+</div>
+      <div class="fmore-txt">Nous contacter<br>pour un devis</div>
+    </a>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="strip-wrap" id="galerie">
+  <div class="strip-header rev">
+    <div class="ey">En images</div>
+    <h2 class="stitle">NOTRE <em>GALERIE</em></h2>
+  </div>
+  <div class="strip-track">
+    <img src="http://www.limousine-events.fr/images/img_photos1.jpg"  alt="Photo 1"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos2.jpg"  alt="Photo 2"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos3.jpg"  alt="Photo 3"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos4.jpg"  alt="Photo 4"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos5.jpg"  alt="Photo 5"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos6.jpg"  alt="Photo 6"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos7.jpg"  alt="Photo 7"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos8.jpg"  alt="Photo 8"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos9.jpg"  alt="Photo 9"  onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos10.jpg" alt="Photo 10" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos11.jpg" alt="Photo 11" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos12.jpg" alt="Photo 12" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos13.jpg" alt="Photo 13" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos14.jpg" alt="Photo 14" onerror="this.style.display='none'">
+    <!-- double for infinite loop -->
+    <img src="http://www.limousine-events.fr/images/img_photos1.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos2.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos3.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos4.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos5.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos6.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos7.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos8.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos9.jpg"  alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos10.jpg" alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos11.jpg" alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos12.jpg" alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos13.jpg" alt="" onerror="this.style.display='none'">
+    <img src="http://www.limousine-events.fr/images/img_photos14.jpg" alt="" onerror="this.style.display='none'">
+  </div>
+</div>
+
+<!-- PARIS BY NIGHT -->
+<div class="pbn">
+  <div class="pbn-bg"><img src="http://www.limousine-events.fr/images/img_vehicule_300cwhite3.jpg" alt="Paris By Night" onerror="this.src='http://www.limousine-events.fr/images/img_photos5.jpg'"></div>
+  <div class="pbn-ov"></div>
+  <div class="pbn-content">
+    <div class="ey">Expérience unique</div>
+    <h2 class="stitle">PARIS<br><em>BY NIGHT</em></h2>
+    <p>Faites une visite inoubliable à bord d'une luxueuse limousine avec vue sur tous les monuments illuminés de la capitale. Tour Eiffel, Champs-Élysées, Arc de Triomphe, Notre-Dame... Vous n'aurez plus qu'à vous laisser envoûter par la plus belle ville du monde !</p>
+    <a href="#contact" class="btn-red">Réserver cette expérience</a>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="pricing" id="tarifs">
+  <div class="rev">
+    <div class="ey">Investissement</div>
+    <h2 class="stitle">NOS <em>TARIFS</em></h2>
+  </div>
+  <div class="ptabs">
+    <button class="ptab active" onclick="showP('mariage',this)">Mariage</button>
+    <button class="ptab" onclick="showP('transfert',this)">Transfert</button>
+    <button class="ptab" onclick="showP('pbn',this)">Paris By Night</button>
+    <button class="ptab" onclick="showP('mad',this)">Mise à dispo.</button>
+    <button class="ptab" onclick="showP('forfaits',this)">Forfaits</button>
+  </div>
+
+  <div class="pcont active" id="p-mariage">
+    <div class="pcard rev"><div class="pname">MARIAGE ESSENTIEL</div><div class="pdur">3 heures · Hors samedi</div><div class="pprice">400€</div><div class="pfrom">À partir de · 60 km inclus</div><ul class="plist"><li>60 km inclus</li><li>Chauffeur en tenue</li><li>Heure supp. dès 100€</li><li>Km supp. 2€/km</li></ul></div>
+    <div class="pcard feat rev"><div class="pbadge">Plus demandé</div><div class="pname">MARIAGE PRESTIGE</div><div class="pdur">5 heures · Paris & Banlieue</div><div class="pprice">650€</div><div class="pfrom">À partir de · 100 km inclus</div><ul class="plist"><li>100 km inclus</li><li>Chauffeur en tenue</li><li>Champagne offert</li><li>Heure supp. dès 100€</li><li>Km supp. 2€/km</li><li>Hors Île-de-France : nous consulter</li></ul></div>
+    <div class="pcard rev"><div class="pname">MARIAGE SIGNATURE</div><div class="pdur">5 heures · Samedi inclus</div><div class="pprice">850€</div><div class="pfrom">Haute saison</div><ul class="plist"><li>100 km inclus</li><li>Tapis rouge à l'arrivée</li><li>Champagne & décoration</li><li>Heure supp. dès 130€</li><li>Km supp. 2€/km</li></ul></div>
+  </div>
+
+  <div class="pcont" id="p-transfert">
+    <div class="pcard rev"><div class="pname">AÉROPORT / GARE</div><div class="pdur">Aller simple</div><div class="pprice">150€</div><div class="pfrom">À partir de</div><ul class="plist"><li>Prise en charge domicile</li><li>Suivi des vols</li><li>Ponctualité garantie</li></ul></div>
+    <div class="pcard feat rev"><div class="pbadge">Professionnel</div><div class="pname">TRANSFERT VIP</div><div class="pdur">Toutes destinations</div><div class="pprice">Sur devis</div><div class="pfrom">Devis personnalisé</div><ul class="plist"><li>CDG, Orly, Le Bourget</li><li>Gares parisiennes</li><li>Hôtels de luxe</li><li>Confidentialité totale</li><li>Itinéraire optimisé</li></ul></div>
+    <div class="pcard rev"><div class="pname">HORS ÎLE-DE-FRANCE</div><div class="pdur">Province · Toute la France</div><div class="pprice">Nous consulter</div><div class="pfrom">Devis sur mesure</div><ul class="plist"><li>Toute la France</li><li>Aller-retour disponible</li><li>Chauffeur expérimenté</li></ul></div>
+  </div>
+
+  <div class="pcont" id="p-pbn">
+    <div class="pcard rev"><div class="pname">PARIS BY NIGHT</div><div class="pdur">2-3 heures · 8 personnes max</div><div class="pprice">300€</div><div class="pfrom">À partir de</div><ul class="plist"><li>Monuments illuminés</li><li>Tour Eiffel, Champs-Élysées</li><li>Chauffeur guide</li></ul></div>
+    <div class="pcard feat rev"><div class="pbadge">Romantique</div><div class="pname">PARIS BY NIGHT GALA</div><div class="pdur">4 heures · Soirée complète</div><div class="pprice">500€</div><div class="pfrom">À partir de</div><ul class="plist"><li>Circuit Paris by night complet</li><li>Champagne & petits fours</li><li>Arrêts photos</li><li>Musique d'ambiance</li><li>Décoration intérieure</li></ul></div>
+    <div class="pcard rev"><div class="pname">PARIS BY NIGHT PRIVÉ</div><div class="pdur">Sur mesure · Toute la nuit</div><div class="pprice">Sur devis</div><div class="pfrom">Formule exclusive</div><ul class="plist"><li>Itinéraire personnalisé</li><li>Open bar premium</li><li>Animation musicale</li><li>Décoration sur mesure</li></ul></div>
+  </div>
+
+  <div class="pcont" id="p-mad">
+    <div class="pcard rev"><div class="pname">3 HEURES</div><div class="pdur">Minimum de réservation</div><div class="pprice">300€</div><div class="pfrom">À partir de</div><ul class="plist"><li>Chauffeur inclus</li><li>Destinations au choix</li><li>Siège cuir, mini bar</li><li>Karaoké & musique</li></ul></div>
+    <div class="pcard feat rev"><div class="pbadge">Populaire</div><div class="pname">JOURNÉE PRESTIGE</div><div class="pdur">8 heures · 200 km inclus</div><div class="pprice">700€</div><div class="pfrom">À partir de</div><ul class="plist"><li>200 km inclus</li><li>Chauffeur dédié</li><li>Mini bar réapprovisionné</li><li>Karaoké & discothèque</li><li>Km supp. 2€/km</li></ul></div>
+    <div class="pcard rev"><div class="pname">HEURE SUPP.</div><div class="pdur">À la carte</div><div class="pprice">100€</div><div class="pfrom">Par heure supplémentaire</div><ul class="plist"><li>Flexible à la demande</li><li>Tous véhicules</li><li>Km supp. 2€/km</li></ul></div>
+  </div>
+
+  <div class="pcont" id="p-forfaits">
+    <div class="pcard rev"><div class="pname">FORFAIT RESTAURANT</div><div class="pdur">Soirée complète</div><div class="pprice">Sur devis</div><div class="pfrom">Selon destination</div><ul class="plist"><li>Prise en charge domicile</li><li>Attente 2h sur place</li><li>Balade 30 min · Paris monuments</li><li>Retour domicile inclus</li></ul></div>
+    <div class="pcard feat rev"><div class="pbadge">All-inclusive</div><div class="pname">FORFAIT CASINO</div><div class="pdur">Soirée VIP</div><div class="pprice">Sur devis</div><div class="pfrom">Contactez-nous</div><ul class="plist"><li>Transfert aller-retour casino</li><li>Attente sur place</li><li>Champagne à l'embarquement</li><li>Tapis rouge garanti</li><li>Discrétion assurée</li></ul></div>
+    <div class="pcard rev"><div class="pname">PUB LIMO</div><div class="pdur">Campagne publicitaire</div><div class="pprice">Étude de cas</div><div class="pfrom">Devis personnalisé</div><ul class="plist"><li>Logo/slogan sur limousine</li><li>Champs-Élysées & Paris</li><li>Jour / semaine / mois</li><li>Conception incluse</li></ul></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="cleft">
+    <div class="ey">Réservation</div>
+    <h2 class="stitle" style="color:var(--white)">PARLONS DE<br><em style="color:rgba(255,255,255,0.45)">VOTRE ÉVÉNEMENT</em></h2>
+    <ul class="clist">
+      <li class="citem"><span class="cicon">📞</span><div><span class="clabel">Téléphone principal</span><a href="tel:0620356152" class="cval">06 20 35 61 52</a></div></li>
+      <li class="citem"><span class="cicon">📱</span><div><span class="clabel">Ligne secondaire</span><a href="tel:0618267460" class="cval">06 18 26 74 60</a></div></li>
+      <li class="citem"><span class="cicon">✉️</span><div><span class="clabel">Email</span><a href="mailto:limousine.events@gmail.com" class="cval" style="font-size:0.95rem;letter-spacing:0.02em">limousine.events@gmail.com</a></div></li>
+      <li class="citem"><span class="cicon">📍</span><div><span class="clabel">Zone de service</span><span class="cval" style="font-size:0.9rem">Paris & Île-de-France · Val-de-Marne (94)</span></div></li>
+    </ul>
+    <div class="csocials">
+      <a href="http://www.facebook.com/samlimosam" target="_blank" class="csoc">Facebook</a>
+      <a href="tel:0620356152" class="csoc">Appeler</a>
+    </div>
+  </div>
+  <div class="cright">
+    <div class="ftitle">DEMANDE DE <span>RÉSERVATION</span></div>
+    <div class="frow">
+      <div class="fg"><label>Prénom & Nom</label><input type="text" placeholder="Jean Dupont"></div>
+      <div class="fg"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"></div>
+    </div>
+    <div class="fg"><label>Email</label><input type="email" placeholder="jean@exemple.com"></div>
+    <div class="frow">
+      <div class="fg"><label>Prestation</label><select><option value="">Choisir...</option><option>Mariage</option><option>Transfert (Aéroport / Gare)</option><option>Paris By Night</option><option>Anniversaire / Événement</option><option>Mise à Disposition</option><option>Forfait Restaurant</option><option>Forfait Casino</option><option>Pub Limo</option></select></div>
+      <div class="fg"><label>Date souhaitée</label><input type="date"></div>
+    </div>
+    <div class="fg"><label>Votre message</label><textarea placeholder="Décrivez votre événement, nombre de passagers, vos besoins..."></textarea></div>
+    <button class="fsend" id="fsend">ENVOYER MA DEMANDE</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a href="#" class="flogo">LIMOUSINE<span>EVENTS</span></a>
+    <p class="fdesc">Spécialiste de la location de limousine avec chauffeur en Île-de-France. Des moments féériques et mémorables pour tous vos événements de prestige depuis 2009.</p>
+    <div class="flic">Ministère chargé des Transports · Licence n°2009/11/0003596</div>
+  </div>
+  <div class="fcol"><h5>Prestations</h5><ul><li><a href="#services">Mariage</a></li><li><a href="#services">Transfert</a></li><li><a href="#services">Paris By Night</a></li><li><a href="#services">Pub Limo</a></li><li><a href="#services">Événements</a></li><li><a href="#services">Forfait Restaurant</a></li><li><a href="#services">Forfait Casino</a></li><li><a href="#services">Mise à Disposition</a></li></ul></div>
+  <div class="fcol"><h5>Nos Limousines</h5><ul><li><a href="#fleet">Chrysler 300C White</a></li><li><a href="#fleet">Chrysler 300C Black</a></li><li><a href="#fleet">Dodge Charger</a></li><li><a href="#fleet">Lincoln White</a></li><li><a href="#fleet">Lincoln Silver</a></li></ul></div>
+  <div class="fcol"><h5>Contact</h5><ul><li><a href="tel:0620356152">06 20 35 61 52</a></li><li><a href="tel:0618267460">06 18 26 74 60</a></li><li><a href="mailto:limousine.events@gmail.com">limousine.events@gmail.com</a></li><li><a href="#">Val-de-Marne (94)</a></li><li><a href="#">Paris & Île-de-France</a></li></ul></div>
+  <div class="fbot">
+    <p>© 2025 Limousine Events — Tous droits réservés</p>
+    <a href="http://www.limousine-events.fr/CGV_v2.pdf" target="_blank" class="fcgv">Télécharger les CGV →</a>
+  </div>
+</footer>
+
+<script>
+// NAV
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+
+// HERO SLIDESHOW
+const slides = document.querySelectorAll('.slide');
+const dotsEl = document.getElementById('dots');
+let cur = 0;
+
+// Build dots
+slides.forEach((_, i) => {
+  const b = document.createElement('button');
+  b.className = 'hdot' + (i === 0 ? ' active' : '');
+  b.onclick = () => goTo(i);
+  dotsEl.appendChild(b);
+});
+
+function goTo(n) {
+  slides[cur].classList.remove('active');
+  dotsEl.children[cur] && dotsEl.children[cur].classList.remove('active');
+  cur = (n + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  const img = slides[cur].querySelector('img');
+  if (img) { img.style.animation = 'none'; img.offsetHeight; img.style.animation = ''; }
+  dotsEl.children[cur] && dotsEl.children[cur].classList.add('active');
+}
+setInterval(() => goTo(cur + 1), 5500);
+
+// REVEALS
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rev').forEach(el => ro.observe(el));
+
+// PRICING
+function showP(id, btn) {
+  document.querySelectorAll('.pcont').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+  document.getElementById('p-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// SEND
+document.getElementById('fsend').addEventListener('click', function() {
+  this.textContent = '✔ MESSAGE ENVOYÉ !';
+  this.style.background = '#1d5c1d';
+  setTimeout(() => { this.textContent = 'ENVOYER MA DEMANDE'; this.style.background = ''; }, 3000);
+});
+</script>
+</body>
+</html>
